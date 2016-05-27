@@ -1,6 +1,25 @@
 var express = require('express');
 var app = express();
 var path = require('path');
+var mysql = require('mysql');
+var bodyParser = require('body-parser');
+
+var con = mysql.createConnection({
+   host     : 'localhost',
+   user     : 'root',
+   password : 'root',
+   database : 'tododb'
+});
+con.connect(function(err){
+  if(err){
+    console.log('Error connecting to tododb');
+    return;
+  }
+  console.log('On Startup: MySQL Connection established');
+});
+
+// app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.static(__dirname + '/public'));
 app.set('views', path.join(__dirname, 'app_server', 'views'));
@@ -22,6 +41,6 @@ app.use(function(err, req, res, next){
   res.send('500 error');
  });
 app.listen(3000, function(){
-  console.log('Hello world app started on http://localhost:' + 3000 +
+  console.log('Todo app started on http://localhost:' + 3000 +
  '; press ctrl-c to terminate.');
  });
