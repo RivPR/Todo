@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/RivPR/Todo#readme",
   "dependencies": {
+    "body-parser": "^1.15.1",
     "express": "^4.13.4",
     "express-handlebars": "^3.0.0",
     "mysql": "^2.10.2"

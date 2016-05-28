@@ -1,1 +1,22 @@
 <h2>Welcome! </h2>
+<h4>{{{title}}}</h4>
+
+<table id="jobTable">
+<thead>
+<tr>
+  <th>Name of Job</th>
+  <th>Date Applied</th>
+  <th>Comments</th>
+</tr>
+</thead>
+<tbody>
+{{#each jobs}}
+<tr>
+  <td>{{this.name}}</td>
+  <td>{{this.date}}</td>
+  <td>{{this.comments}}</td>
+  <td><a href ="delete/{{this.id}}" class="button deleteButton" value={{this.id}}>Delete</td>
+</tr>
+{{/each}}
+</tbody>
+</table>
