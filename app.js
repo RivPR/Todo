@@ -4,6 +4,7 @@ var path = require('path');
 var mysql = require('mysql');
 var bodyParser = require('body-parser');
 
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 app.use(express.static(__dirname + '/public'));
@@ -15,6 +16,10 @@ app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
 
 app.use('/', require('./app_server/routes/index'));
+
+// app.post('/add', function(req, res){
+//   var name = console.log('name in app.js ' + req.body.name);
+// });
 
 app.use(function(req, res){
     res.status(404);
