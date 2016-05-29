@@ -1,6 +1,7 @@
 <h2>Welcome! </h2>
 <h4>{{{title}}}</h4>
 
+{{#if jobs}}
 <table id="jobTable">
 <thead>
 <tr>
@@ -10,14 +11,30 @@
 </tr>
 </thead>
 <tbody>
+
 {{#each jobs}}
 <tr>
   <td>{{this.name}}</td>
   <td>{{this.date}}</td>
   <td>{{this.comments}}</td>
   <td><a href ="delete/{{this.id}}" class="button deleteButton" value={{this.id}}>Delete</td>
+  <td><a href="edit/{{this.id}}" class="button editButton" value={{this.id}}>Edit</td>
 </tr>
 {{/each}}
+{{/if}}
+
+{{#if job}}
+  {{#each job}}
+  <p>{{this.name}}</p><p>{{this.date}}</p><p>{{this.comments}}</p>
+  <form action="edit/" method="POST">
+  <input placeholder={{this.name}}>
+  <input value="{{this.date}}">
+  <input value={{this.comments}}>
+  <input type="button" value="Update">
+  </form>
+  {{/each}}
+{{/if}}
+
 </tbody>
 </table>
 <div id="addForm">

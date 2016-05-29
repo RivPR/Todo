@@ -21,6 +21,20 @@ module.exports.delete = function(req, res){
   });
 };
 
+module.exports.edit = function(req, res) {
+  console.log('in module edit');
+  mysql.getConnection(function(err, con){
+
+    con.query(('SELECT * FROM tracker WHERE id = ' + req.params.id), function(err, rows){
+      if(err) throw err;
+      console.log('Job number : ' + req.params.id + ' was selected to be edited!');
+      res.render('index', { job: rows });
+    });
+
+  });
+}
+
+
 module.exports.add = function(req, res){
 
     var name = req.body.name;

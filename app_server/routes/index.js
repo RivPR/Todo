@@ -8,6 +8,8 @@ router.use(bodyParser.json());
 router.get('/', ctrlMain.jobs);
 router.get('/delete/:id', ctrlMain.delete);
 router.post('/add', ctrlMain.add);
+router.get('/edit/:id', ctrlMain.edit);
+
 
 
 
