@@ -9,6 +9,7 @@ router.get('/', ctrlMain.jobs);
 router.get('/delete/:id', ctrlMain.delete);
 router.post('/add', ctrlMain.add);
 router.get('/edit/:id', ctrlMain.edit);
+router.post('/update', ctrlMain.update);
 
 
 

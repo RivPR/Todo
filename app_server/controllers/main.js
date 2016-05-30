@@ -22,7 +22,7 @@ module.exports.delete = function(req, res){
 };
 
 module.exports.edit = function(req, res) {
-  console.log('in module edit');
+
   mysql.getConnection(function(err, con){
 
     con.query(('SELECT * FROM tracker WHERE id = ' + req.params.id), function(err, rows){
@@ -50,3 +50,20 @@ module.exports.add = function(req, res){
     });
      res.redirect('/');
 };
+
+module.exports.update = function(req, res){
+  console.log('inside update ' + req );
+
+  var name = req.body.name;
+  var date = req.body.date;
+  var comments = req.body.comments;
+  var id = req.body.id;
+  console.log('NAME!!!: ' + name + ' DATE!!: ' + date + ' COMMENTS!: ' + comments + ' id: ' + id);
+
+  mysql.getConnection(function(err, con){
+    con.query('UPDATE tracker SET name=\'' + name + '\', date= \'' + date
+            + '\', comments=\'' + comments + '\'' + 'WHERE id =\'' + id + '\'' );
+  console.log('in getconn update!' + req.query);
+  });
+    res.redirect('/');
+}
